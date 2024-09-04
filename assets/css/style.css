@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', Arial;
+    outline: none;
+}
+body {
+    background-color: #e3f4fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+p {
+    font-size: 16px;
+    color: #7491a3;
+}
+.container {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    height: 100%;
+    border-radius: 15px;
+}
+.results-0, .results-1 {
+    display: none;
+}
+.mortgage, .results-0.active, .results-1.active {
+    width: 450px;
+    height: 550px;
+    padding: 20px 30px;
+}
+.mortgage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mortgageTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.mortgageTitle span {
+    cursor: pointer;
+    color: #607a84;
+    text-decoration: 1px underline;
+}
+.mortgageAmount, .mortgageTerm, .mortgageType, .mortgageTypeContent {
+    margin-bottom: 10px;
+}
+.mortgageAmount p, .mortgageTerm p, .mortgageType p{
+    color: #607a84;
+    padding: 15px 0;
+}
+.mortgageAmountContent, .mortgageTermContent, .mortgageTypeContent{
+    border: 1px solid #607a84;
+    border-radius: 5px;
+    display: flex;
+}
+.mortgageAmountContent:hover, .mortgageTermContent:hover {
+    border: 1px solid #000;
+}
+.mortgageTypeContent:hover {
+    border: 1px solid #d9db30;
+}
+.mortgageAmountContent p, .mortgageTermContent p, .mortgageTypeContent h3 {
+    background-color: #e3f4fc;
+    border-radius: 4px 0 0 4px;
+    padding: 12px 18px;
+}
+.mortgageTermContent p {
+    border-radius: 0 4px 4px 0;
+}
+.mortgageTerm {
+    display: flex;
+    gap: 25px;
+}
+.mortgageTypeContent {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.mortgageTypeContent h3 {
+    background-color: transparent;
+}
+.mortgageTypeOption {
+    max-width: 18px;
+    min-width: 18px;
+    max-height: 18px;
+    min-height: 18px;
+    margin-left: 15px;
+    border: 2px solid #133040;
+    border-radius: 50%;
+}
+.mortgageTypeContent.active {
+    border: 1px solid #d9db30;
+    background-color: #fafae0;
+}
+.mortgageTypeOption.active {
+    border: 2px solid #d9db30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mortgageTypeOption.active .active {
+    max-width: 12px;
+    min-width: 12px;
+    max-height: 12px;
+    min-height: 12px;
+    border-radius: 50%;
+    background-color: #d9db30;
+}
+input[type=text] {
+    resize: none;
+    border: none;
+    margin: 10px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: 0;
+    background-color: #d9db30;
+    color: #133040;
+    cursor: pointer;
+    gap: 15px;
+    padding: 15px;
+    margin-top: 15px;
+    max-width: 290px;
+}
+button:hover {
+    background-color: #ffff45;
+}
+.results-0 {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.results-0.active, .results-1.active {
+    color: #fff;
+    background-color: #133040;
+    border-radius: 0px 15px 15px 65px;
+    display: flex;
+    flex-direction: column;
+}
+.results-0.active h1, .results-1.active h1 {
+    margin: 25px 0;
+}
+.results-1.active .results-1-title {
+    margin-top: 0;
+}
+.results-1-info {
+    background-color: #0e2532;
+    border-radius: 10px;
+    border-top: 4px solid #d9db30;
+    padding: 15px;
+    margin-top: 43px;
+}
+.results-1-infoMonthly h1 {
+    color: #d9db30;
+    font-size: 45px;
+}
+.results-1-infoTotal {
+    border-top: 1px solid #607a84;
+    padding-top: 25px;
+}
+.error {
+    font-size: 10px;
+    color: #f00;
+    padding-top: 10px;
+}
+.styleError-0, .styleError-0:hover {
+    border-color: #f00;
+}
+p.styleError-1 {
+    background-color: #f00;
+    color: #fff;
+}
+
+@media(max-width: 996px) {
+    .container {
+        flex-direction: column;
+    }
+    .mortgage, .results-0.active, .results-1.active {
+        height: max-content;
+    }
+    .results-0.active, .results-1.active {
+        border-radius: 0px 0px 15px 15px;
+    }
+}
+
+@media(max-width: 495px) {
+    h1 {
+        font-size: 20px;
+    }
+    span, p, h3 {
+        font-size: 14px;
+    }
+    .mortgage, .results-0.active, .results-1.active {
+        width: 250px;
+    }
+    .mortgageTitle {
+        flex-direction: column;
+        align-items: start;
+        gap: 15px;
+    }
+    .mortgageTerm {
+        flex-direction: column;
+        gap: 0;
+    }
+    .results-1-infoMonthly h1 {
+        font-size: 35px;
+    }
+}

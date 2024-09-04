@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+    <link rel="shortcut icon" type="imagex/png" href="assets/images/favicon-32x32.png">
+    <title>Calculadora de Amortização de Hipoteca</title>
+</head>
+<body>
+    <div class="container">
+        <div class="mortgage">
+            <div class="mortgageTitle">
+                <h1>Mortgage Calculator </h1>
+                <span><b>Clear All</b></span>
+            </div>
+            <form method="POST" class="validator">
+                <label class="mortgageAmount a">
+                    <p>Mortgage Amount</p>
+                    <div class="mortgageAmountContent">
+                        <p><b>£</b></p>
+                        <input name="limpar" type="text" data-rules="required|value"/>
+                    </div>
+                </label>
+                <div class="mortgageTerm">
+                    <label class="mortgageTerm-0 a">
+                        <p>Mortgage Term</p>
+                        <div class="mortgageTermContent">
+                            <input name="limpar" type="text" data-rules="required|value"/>
+                            <p><b>years</b></p>
+                        </div>
+                    </label>
+                    <label class="mortgageTerm-1 a">
+                        <p>Interest Rate</p>
+                        <div class="mortgageTermContent">
+                            <input name="limpar" type="text" data-rules="required|value"/>
+                            <p><b>%</b></p>
+                        </div>
+                    </label>
+                </div>
+                <label class="mortgageType">
+                    <p>Mortgage Type</p>
+                    <div class="mortgageTypeContent">
+                        <div class="mortgageTypeOption"><div class="active"></div></div>
+                        <h3>Rapayment</h3>
+                    </div>
+                    <div class="mortgageTypeContent">
+                        <div class="mortgageTypeOption"><div class="active"></div></div>
+                        <h3>Interest Only</h3>
+                    </div>
+                </label>
+                <button><img src="assets/images/icon-calculator.svg"/><h3>Calculate Repayments</h3></button>
+            </form>
+        </div>
+        <div class="results-0 active">
+            <img src="assets/images/illustration-empty.svg"/>
+            <h1>Results shown here</h1>
+            <p>Complete the form and click "Calculate Repayments" to see what your monthly repayments would be.</p>
+        </div>
+        <div class="results-1">
+            <h1 class="results-1-title">Your results</h1>
+            <p>Your results are dhown below based on the information you provided. To adjust the results, edit the form and click "Calculate Repayments" again.</p>
+            <div class="results-1-info">
+                <div class="results-1-infoMonthly">
+                    <p>Your monthly repayments</p>
+                    <h1>results</h1>
+                </div>
+                <div class="results-1-infoTotal">
+                    <p>Total you'll repay over the term</p>
+                    <h1>results</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

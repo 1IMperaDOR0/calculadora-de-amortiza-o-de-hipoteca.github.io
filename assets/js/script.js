@@ -184,8 +184,8 @@ function calculateMortgage() {
     let monthlyPayment = mortgageAmount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
     let totalPayment = monthlyPayment * numberOfPayments;
 
-    document.querySelector('.results-1-infoMonthly h1').textContent = formatNumber(monthlyPayment.toFixed(2));
-    document.querySelector('.results-1-infoTotal h1').textContent = formatNumber(totalPayment.toFixed(2));
+    document.querySelector('.results-1-infoMonthly h1').textContent = formatNumber(`£${monthlyPayment.toFixed(2)}`);
+    document.querySelector('.results-1-infoTotal h1').textContent = formatNumber(`£${totalPayment.toFixed(2)}`);
 }
 
 // Função para adicionar vírgulas no número exibido

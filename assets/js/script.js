@@ -13,7 +13,9 @@ mortgageType.addEventListener('click', (event) => {
         mortgageTypeContent.forEach((type) => {
             type.classList.remove('active');
             let mortgageTypeOption = type.querySelector('.mortgageTypeOption');
-            mortgageTypeOption.classList.remove('active');
+            if (mortgageTypeOption) {
+                mortgageTypeOption.classList.remove('active');
+            }
         });
         typeElement.classList.add('active');
         let selectedType = typeElement.querySelector('.mortgageTypeOption');
@@ -191,6 +193,37 @@ function formatNumber(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-// Bloquear o envio e calcular ao clicar no botão
+// Bloquear o envio e calcular ao clicar no botão de cálculo
 let form = document.querySelector('.validator');
 form.addEventListener('submit', validator.handleSubmit);
+
+// Evento de clique para limpar o formulário
+document.querySelector("span").addEventListener("click", function() {
+    clearAll();
+});
+
+// Função para limpar o formulário
+function clearAll() {
+    // Limpar todos os inputs dentro do formulário com a classe '.validator'
+    var entradas = document.querySelectorAll('.validator input');
+    entradas.forEach(entrada => {
+        console.log("Limpando input:", entrada);
+        entrada.value = '';
+    });
+
+    // Resetar seleção ativa dos tipos de hipoteca
+    document.querySelectorAll('.mortgageTypeContent').forEach(content => {
+        content.classList.remove('active');
+        let option = content.querySelector('.mortgageTypeOption');
+        if (option) {
+            option.classList.remove('active');
+        }
+    });
+
+    // Resetar os resultados exibidos
+    document.querySelector('.results-1').classList.remove('active');
+    document.querySelector('.results-0').classList.add('active');
+
+    // Limpar mensagens de erro
+    validator.clearErrors();
+}

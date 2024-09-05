@@ -1,15 +1,14 @@
-// Removendo e adicionando a active nas class mortgageTypeContent e mortgageTypeOption
+// Evento de clique para seleção do tipo de hipoteca
 let mortgageType = document.querySelector('.mortgageType');
-
 mortgageType.addEventListener('click', (event) => {
     let target = event.target;
     let typeElement;
-    if(target.classList.contains('mortgageTypeContent')) {
+    if (target.classList.contains('mortgageTypeContent')) {
         typeElement = target;
     } else {
         typeElement = target.closest('.mortgageTypeContent');
-    };
-    if(typeElement) {
+    }
+    if (typeElement) {
         let mortgageTypeContent = mortgageType.querySelectorAll('.mortgageTypeContent');
         mortgageTypeContent.forEach((type) => {
             type.classList.remove('active');
@@ -18,10 +17,10 @@ mortgageType.addEventListener('click', (event) => {
         });
         typeElement.classList.add('active');
         let selectedType = typeElement.querySelector('.mortgageTypeOption');
-        if(selectedType) {
-            selectedType.classList.add('active')
-        };
-    };
+        if (selectedType) {
+            selectedType.classList.add('active');
+        }
+    }
 });
 
 // Definindo o objeto validador
@@ -32,7 +31,7 @@ let validator = {
 
         let inputs = document.querySelectorAll('input');
         let types = document.querySelectorAll('.mortgageType');
-        
+
         validator.clearErrors(); // Limpa erros antes de começar a validação
 
         for (let i = 0; i < inputs.length; i++) {
@@ -60,7 +59,7 @@ let validator = {
             let results1 = document.querySelector('.results-1');
             results1.classList.add('active');
 
-            calcularResultados(); // Chamando a função para calcular e exibir os resultados
+            calculateMortgage(); // Correção no nome da função de cálculo
         }
     },
     checkInput: (input) => {
@@ -76,24 +75,24 @@ let validator = {
                     if (input.value.trim() === '') {
                         erro = 'This field is required.';
                         break;
-                    };
+                    }
                 } else if (rule === 'value') {
-                    let regex = /^\d+(?:\.\d+)?$/; // permite apenas números e pontos
+                    let regex = /^\d{1,3}(,\d{3})*(\.\d+)?$/; // permite apenas números, pontos e vírgulas
                     if (input.value !== '' && !regex.test(input.value)) {
-                        erro = 'Please only enter numbers or numbers with dots';
+                        erro = 'Please only enter numbers or numbers with dots.';
                         break;
-                    };
-                };
-            };
-        };
+                    }
+                }
+            }
+        }
 
         if (input.classList.contains('mortgageType')) {
             let mortgageTypeContents = input.querySelectorAll('.mortgageTypeContent');
             let hasActive = Array.from(mortgageTypeContents).some((content) => content.classList.contains('active'));
             if (!hasActive) {
                 erro = 'This field is required.';
-            };
-        };
+            }
+        }
 
         return erro || true;
     },
@@ -114,27 +113,25 @@ let validator = {
                     p.classList.add('styleError-1');
                 }
             });
-        };
+        }
 
         let mortgageAmountContent = input.closest('.mortgageAmountContent');
         if (mortgageAmountContent) {
             mortgageAmountContent.classList.add('styleError-0');
-            
             let mortgageAmountP = mortgageAmountContent.querySelector('p');
             if (mortgageAmountP) {
                 mortgageAmountP.classList.add('styleError-1');
             }
-        };
+        }
 
         let mortgageTermContent = input.closest('.mortgageTermContent');
         if (mortgageTermContent) {
             mortgageTermContent.classList.add('styleError-0');
-
             let mortgageTermP = mortgageTermContent.querySelector('p');
             if (mortgageTermP) {
                 mortgageTermP.classList.add('styleError-1');
             }
-        };
+        }
     },
     clearErrors: () => {
         document.querySelectorAll('.error').forEach(element => {
@@ -151,53 +148,49 @@ let validator = {
     }
 };
 
-// Criando a função para os cálculos
-function calcularResultados() {
-    // Capturando os valores dos inputs e removendo pontos e vírgulas para converter em número
-    let valorPrincipal = parseFloat(
-        document.querySelector('.mortgageAmountContent input').value.replace(/\./g, '').replace(',', '.')
-    );
-    let anos = parseInt(document.querySelector('.mortgageTerm-0 input').value);
-    let taxaAnual = parseFloat(
-        document.querySelector('.mortgageTerm-1 input').value.replace(',', '.')
-    );
-    let somenteJuros = document.querySelector('.mortgageTypeContent.active h3').textContent === 'Interest Only';
+// Função para formatar o input de valores numéricos
+function formatNumberInput(inputElement) {
+    let value = inputElement.value.replace(/[^0-9.]/g, ''); // Remove caracteres inválidos
+    let parts = value.split('.'); // Dividir em parte inteira e decimal
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); // Adicionar vírgulas na parte inteira
+    inputElement.value = parts.length > 1 ? parts.join('.') : parts[0]; // Rejuntar parte inteira e decimal
+}
 
-    // Calculando o pagamento mensal e o total
-    let taxaMensal = taxaAnual / 12 / 100;
-    let totalPagamentos = anos * 12;
-    let pagamentoMensal, totalPagamento;
+// Aplicar a formatação no input de valor da hipoteca
+let mortgageAmountInput = document.querySelector('.mortgageAmountContent input');
+mortgageAmountInput.addEventListener('input', function () {
+    formatNumberInput(this);
+});
 
-    if (somenteJuros) {
-        pagamentoMensal = valorPrincipal * taxaMensal;
-        totalPagamento = pagamentoMensal * totalPagamentos;
-    } else {
-        pagamentoMensal = (valorPrincipal * taxaMensal * Math.pow(1 + taxaMensal, totalPagamentos)) /
-                          (Math.pow(1 + taxaMensal, totalPagamentos) - 1);
-        totalPagamento = pagamentoMensal * totalPagamentos;
+// Função de cálculo da hipoteca
+function calculateMortgage() {
+    let mortgageAmountInput = document.querySelector('.mortgageAmountContent input').value;
+    let mortgageTermInput = document.querySelector('.mortgageTerm-0 input').value;
+    let interestRateInput = document.querySelector('.mortgageTerm-1 input').value;
+
+    let mortgageAmount = parseFloat(mortgageAmountInput.replace(/,/g, '')); // Remover vírgulas
+    let mortgageTerm = parseInt(mortgageTermInput);
+    let interestRate = parseFloat(interestRateInput) / 100;
+
+    if (isNaN(mortgageAmount) || isNaN(mortgageTerm) || isNaN(interestRate)) {
+        alert('Por favor, insira valores válidos.');
+        return;
     }
 
-    // Atualizando os resultados na interface com formatação
-    document.querySelector('.results-1-infoMonthly h1').textContent = `£${pagamentoMensal.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    document.querySelector('.results-1-infoTotal h1').textContent = `£${totalPagamento.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    let monthlyRate = interestRate / 12;
+    let numberOfPayments = mortgageTerm * 12;
+    let monthlyPayment = mortgageAmount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+    let totalPayment = monthlyPayment * numberOfPayments;
 
-    // Exibindo os resultados
-    document.querySelector('.results-0').classList.remove('active');
-    document.querySelector('.results-1').classList.add('active');
+    document.querySelector('.results-1-infoMonthly h1').textContent = formatNumber(monthlyPayment.toFixed(2));
+    document.querySelector('.results-1-infoTotal h1').textContent = formatNumber(totalPayment.toFixed(2));
 }
 
-// Criando uma função para limpar o formulário
-document.querySelector("span").addEventListener("click", function() {
-    clearAll("limpar");
-});
-  
-function clearAll(name) {
-    var entradas = document.querySelectorAll("input[name='"+name+"']");
-    [].map.call(entradas, entrada => entrada.value = '');
+// Função para adicionar vírgulas no número exibido
+function formatNumber(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-// Selecionando o formulário
+// Bloquear o envio e calcular ao clicar no botão
 let form = document.querySelector('.validator');
-
-// Bloqueando o envio
 form.addEventListener('submit', validator.handleSubmit);

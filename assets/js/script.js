@@ -166,11 +166,13 @@ mortgageAmountInput.addEventListener('input', function () {
 
 // Função de cálculo da hipoteca
 function calculateMortgage() {
+    // Capturar os valores dos inputs
     let mortgageAmountInput = document.querySelector('.mortgageAmountContent input').value;
     let mortgageTermInput = document.querySelector('.mortgageTerm-0 input').value;
     let interestRateInput = document.querySelector('.mortgageTerm-1 input').value;
-
-    let mortgageAmount = parseFloat(mortgageAmountInput.replace(/,/g, '')); // Remover vírgulas
+    
+    // Remover as vírgulas dos valores
+    let mortgageAmount = parseFloat(mortgageAmountInput.replace(/,/g, ''));
     let mortgageTerm = parseInt(mortgageTermInput);
     let interestRate = parseFloat(interestRateInput) / 100;
 
@@ -179,13 +181,34 @@ function calculateMortgage() {
         return;
     }
 
-    let monthlyRate = interestRate / 12;
-    let numberOfPayments = mortgageTerm * 12;
-    let monthlyPayment = mortgageAmount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
-    let totalPayment = monthlyPayment * numberOfPayments;
+    // Identificar o tipo de hipoteca selecionado
+    let isInterestOnly = document.querySelector('.mortgageTypeContent.active').textContent.includes('Interest Only');
 
-    document.querySelector('.results-1-infoMonthly h1').textContent = formatNumber(`£${monthlyPayment.toFixed(2)}`);
-    document.querySelector('.results-1-infoTotal h1').textContent = formatNumber(`£${totalPayment.toFixed(2)}`);
+    if (isInterestOnly) {
+        // Cálculo de "Interest Only": apenas os juros mensais
+        let monthlyPayment = mortgageAmount * (interestRate / 12);
+
+        // Cálculo do total pago ao longo do tempo (somente juros)
+        let totalPayment = monthlyPayment * (mortgageTerm * 12);
+
+        // Exibir os resultados formatados
+        document.querySelector('.results-1-infoMonthly h1').textContent = formatNumber(`£${monthlyPayment.toFixed(2)}`);
+        document.querySelector('.results-1-infoTotal h1').textContent = formatNumber(`£${totalPayment.toFixed(2)}`);
+    } else {
+        // Cálculo regular de hipoteca com amortização
+        let monthlyRate = interestRate / 12;
+        let numberOfPayments = mortgageTerm * 12;
+
+        // Fórmula para calcular o pagamento mensal
+        let monthlyPayment = mortgageAmount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+        
+        // Cálculo do total a ser pago
+        let totalPayment = monthlyPayment * numberOfPayments;
+
+        // Exibir os resultados formatados
+        document.querySelector('.results-1-infoMonthly h1').textContent = formatNumber(`£${monthlyPayment.toFixed(2)}`);
+        document.querySelector('.results-1-infoTotal h1').textContent = formatNumber(`£${totalPayment.toFixed(2)}`);
+    }
 }
 
 // Função para adicionar vírgulas no número exibido

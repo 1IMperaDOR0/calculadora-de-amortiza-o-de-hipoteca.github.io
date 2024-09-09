@@ -29,9 +29,9 @@ Users should be able to:
 
 ### Screenshot
 ![design-desktop-empty](./assets/images/design-desktop-empty.jpg) 
-![desktop-design-completed](./assets/images/desktop-design-completed.jpg) 
-![mobile-design-up-empty](./assets/images/mobile-design-up-empty.jpeg) 
-![mobile-design-down-empty](./assets/images/mobile-design-down-empty.jpeg) 
+![design-desktop-completed](./assets/images/desktop-design-completed.jpg) 
+![design-mobile-up-empty](./assets/images/design-mobile-up-empty.jpeg) 
+![design-mobile-down-empty](./assets/images/design-mobile-down-empty.jpeg) 
 ![mobile-design-up-completed](./assets/images/mobile-design-up-completed.jpeg) 
 ![mobile-design-down-completed](./assets/images/mobile-design-down-completed.jpeg) 
 ![hover-states](./assets/images/hover-states.jpg) 

@@ -25,6 +25,28 @@ mortgageType.addEventListener('click', (event) => {
     }
 });
 
+// Função para aplicar o estilo baseado no foco e blur
+function applyFocusStyle(inputSelector, containerSelector, paragraphSelector) {
+    const inputElement = document.querySelector(inputSelector);
+    const containerElement = document.querySelector(containerSelector);
+    const paragraphElement = document.querySelector(paragraphSelector);
+
+    inputElement.addEventListener('focus', () => {
+        containerElement.style.borderColor = '#d9db30';
+        paragraphElement.style.backgroundColor = '#d9db30';
+    });
+
+    inputElement.addEventListener('blur', () => {
+        containerElement.style.borderColor = '';
+        paragraphElement.style.backgroundColor = '';
+    });
+}
+
+// Aplicando a função genérica para cada campo
+applyFocusStyle('.mortgageAmountContent input', '.mortgageAmountContent', '.mortgageAmountContent p');
+applyFocusStyle('.mortgageTerm-0 .mortgageTermContent input', '.mortgageTerm-0 .mortgageTermContent', '.mortgageTerm-0 .mortgageTermContent p:last-child');
+applyFocusStyle('.mortgageTerm-1 .mortgageTermContent input', '.mortgageTerm-1 .mortgageTermContent', '.mortgageTerm-1 .mortgageTermContent p:last-child');
+
 // Definindo o objeto validador
 let validator = {
     handleSubmit: (event) => {

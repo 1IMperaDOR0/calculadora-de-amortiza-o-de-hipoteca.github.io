@@ -29,16 +29,16 @@ Users should be able to:
 
 ### Screenshot
 ![descktop-design-empty](./assets/images/descktop-design-empty.jpg) 
-![descktop-design-completed](./assets/ images/descktop-design-completed.jpg) 
+![descktop-design-completed](./assets/images/descktop-design-completed.jpg) 
 ![mobile-design-up-empty](./assets/images/mobile-design-up-empty.jpeg) 
-![mobile-design-down-empty](./ assets/images/mobile-design-down-empty.jpeg) 
+![mobile-design-down-empty](./assets/images/mobile-design-down-empty.jpeg) 
 ![mobil e-design-up-completed](./assets/images/mobile-design-up-completed.jpg) 
-![mobile-design-down-completed](./assets/images/mobile-design-down-completed. jpg) 
+![mobile-design-down-completed](./assets/images/mobile-design-down-completed.jpg) 
 ![hover-state](./assets/images/hover-state.jpg) 
 ![active-state](./assets/images/active-state.jpg) 
-![error-state](./assets /images/error-state.jpg) ### 
+![error-state](./assets/images/error-state.jpg) 
 
-## Links
+### Links
 
 - Solution URL: (https://github.com/1MperaDOR0/calculadora-de-amortiza-o-de-hipoteca.github.io)
 - Live website URL: (https://1mperador0.github.io/ mortgage-amortization-calculator.github.io/)

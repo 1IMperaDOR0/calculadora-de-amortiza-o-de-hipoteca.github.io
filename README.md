@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Screenshot
 ![design-desktop-empty](./assets/images/design-desktop-empty.jpg) 
-![design-desktop-completed](./assets/images/desktop-design-completed.jpg) 
+![design-desktop-completed](./assets/images/design-desktop-completed.jpg) 
 ![design-mobile-up-empty](./assets/images/design-mobile-up-empty.jpeg) 
 ![design-mobile-down-empty](./assets/images/design-mobile-down-empty.jpeg) 
 ![mobile-design-up-completed](./assets/images/mobile-design-up-completed.jpeg) 

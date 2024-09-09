@@ -28,15 +28,15 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page 
 
 ### Screenshot
-![desktop-design-empty](./assets/images/desktop-design-empty.jpg) 
+![design-desktop-empty](./assets/images/design-desktop-empty.jpg) 
 ![desktop-design-completed](./assets/images/desktop-design-completed.jpg) 
 ![mobile-design-up-empty](./assets/images/mobile-design-up-empty.jpeg) 
 ![mobile-design-down-empty](./assets/images/mobile-design-down-empty.jpeg) 
 ![mobile-design-up-completed](./assets/images/mobile-design-up-completed.jpeg) 
 ![mobile-design-down-completed](./assets/images/mobile-design-down-completed.jpeg) 
-![hover-state](./assets/images/hover-state.jpg) 
-![active-state](./assets/images/active-state.jpg) 
-![error-state](./assets/images/error-state.jpg) 
+![hover-states](./assets/images/hover-states.jpg) 
+![active-states](./assets/images/active-states.jpg) 
+![error-states](./assets/images/error-states.jpg) 
 
 ### Links
 

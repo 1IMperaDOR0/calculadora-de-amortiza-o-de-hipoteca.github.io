@@ -40,8 +40,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: (https://github.com/1MperaDOR0/calculadora-de-amortiza-o-de-hipoteca.github.io)
-- Live website URL: (https://1mperador0.github.io/mortgage-amortization-calculator.github.io/)
+- Solution URL: (https://github.com/1IMperaDOR0/calculadora-de-amortiza-o-de-hipoteca.github.io)
+- Live website URL: (https://1imperador0.github.io/mortgage-amortization-calculator.github.io/)
 
 ## My process
 
@@ -90,5 +90,5 @@ With this challenge I was able to understand how many gaps still need to be fill
 
 ## Author
 
-- Frontend Mentor - [@1MperaDOR0](https://www.frontendmentor.io/profile/1MperaDOR0)
-- GitHub - [1MperaDOR0](https://github.com/1MperaDOR0)
+- Frontend Mentor - [@1IMperaDOR0](https://www.frontendmentor.io/profile/1IMperaDOR0)
+- GitHub - [1IMperaDOR0](https://github.com/1IMperaDOR0)

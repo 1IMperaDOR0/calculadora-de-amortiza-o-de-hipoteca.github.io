@@ -41,7 +41,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: (https://github.com/1IMperaDOR0/calculadora-de-amortiza-o-de-hipoteca.github.io)
-- Live website URL: (https://1imperador0.github.io/mortgage-amortization-calculator.github.io/)
+- Live website URL: (https://1imperador0.github.io/calculadora-de-amortiza-o-de-hipoteca.github.io/)
 
 ## My process
 
